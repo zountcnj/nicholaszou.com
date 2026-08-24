@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Nicholas Q Zou</title>
+
+<style>
+  body {
+    zoom: 160%;
+    background-color: rgb(255, 249, 246);
+    font-family: 'Brush Script MT', cursive;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    margin: 0;
+    padding: 0;
+  }
+
+  body.darkmode {
+    background-color: #343434;
+    color: white;
+  }
+
+  body.darkmode .box {
+    border-color: rgb(202, 202, 202);
+  }
+
+  body.darkmode .tablinks {
+    background-color: #333;
+    color: white;
+  }
+
+  #darkmode-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 2px solid #888;
+    background: transparent;
+    color: inherit;
+    font-family: inherit;
+  }
+
+  .box {
+    border: 1px solid black;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: left;
+    transition: border-color 0.4s ease;
+  }
+
+  body.darkmode .box {
+    border-color: #ccc;
+  }
+
+  .tablinks {
+    transition: background-color 0.4s ease, color 0.4s ease;
+    cursor: pointer;
+    font-family: 'Brush Script MT', cursive;
+    font-size: 16px;
+    padding: 6px 14px;
+  }
+
+  .tablinks.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  .tabcontent {
+    display: none;
+    margin-top: 10px;
+  }
+
+  .game-btn {
+    margin: 0;
+    cursor: pointer;
+    padding: 6px 10px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    font-family: 'Brush Script MT', cursive;
+    font-size: 16px;
+  }
+
+  .game-btn:hover {
+    background: #3a3a3a;
+  }
+
+  #page-center {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+  }
+
+  #layout-row {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    align-items: flex-start;
+  }
+
+  #about-col {
+    flex: 0 0 360px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #more-btn {
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 11px;
+    padding: 4px 10px;
+    margin-top: 6px;
+    border-radius: 4px;
+    border: 1px solid #888;
+    background: transparent;
+    color: inherit;
+  }
+
+  #right-panel {
+    overflow: hidden;
+    max-width: 0;
+    opacity: 0;
+    transition: max-width 0.6s ease, opacity 0.5s ease;
+  }
+
+  #right-panel.expanded {
+    max-width: 750px;
+    opacity: 1;
+  }
+
+  #right-inner {
+    width: 700px;
+  }
+</style>
+</head>
+<body>
+
+<button id="darkmode-btn" onclick="toggleDarkmode()">dark mode</button>
+
+<div id="page-center">
+  <div id="layout-row">
+
+    <!-- Left: about-me -->
+    <div id="about-col">
+
+      <!-- Header: name + photo -->
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <h1 style="margin: 0; font-size: 25px;">Nicholas <span style="position: relative; display: inline-block;">Q<a href="https://www.x.com/shpeediry" style="position: absolute; left: 50%; transform: translateX(-50%); top: 100%; line-height: 1;"><img src="twitter1.png" width="32" height="28"></a></span> Zou</h1>
+          <p style="font-size: 11px; margin: 4px 0 0 0;">zoun1@tcnj.edu</p>
+          <button id="more-btn" onclick="toggleMore()">more</button>
+          
+          
+        </div>
+        <img src="pic.png" alt="photo" style="width: 150px; height: auto; object-fit: cover; border-radius: 50%;">
+      </div>
+
+      <!-- Info box -->
+      <div class="box">
+        <p style="margin: 4px 0;">Data Science undergrad @ TCNJ</p>
+        <p style="margin: 4px 0;">Marvel Rivals player for Team Liquid</p>
+        <p style="font-family: Garamond, serif; font-size: 16px; margin-top: 10px;">
+          Hi! I'm currently a Data Science undergraduate at The College of New Jersey. <br>
+          I'm also a professional e-sports player for Team Liquid and have hit rank 1 in Marvel Rivals,
+          Overwatch, and Deadlock.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Right: more panel -->
+    <div id="right-panel">
+      <div id="right-inner">
+
+        <div id="tab-buttons">
+          <button class="tablinks" onclick="openCity(event, 'esports')">esports</button>
+          <button class="tablinks" onclick="openCity(event, 'favs')">favs</button>
+        </div>
+
+        <!-- Esports tab -->
+        <div id="esports" class="tabcontent">
+          <h3 style="margin-bottom: 4px;">esports</h3>
+          <h4 style="margin-bottom: 4px;">organizations represented:</h4>
+          <img src="nyxl.png" style="width: 18px; height: 18px; margin-right: 6px;">
+          <img src="liquid.png" style="width: 18px; height: 21px; margin-right: 6px;">
+          <img src="tor.png" style="width: 18px; height: 18px; margin-right: 6px;">
+          <img src="atl.png" style="width: 18px; height: 18px; margin-right: 6px;">
+          <img src="envy.png" style="width: 18px; height: 18px; margin-right: 6px;">
+          <p style="margin: 4px 0 12px;">rank 1 on:</p>
+
+          <div style="display: flex; flex-direction: row; gap: 20px; align-items: flex-start;">
+            <div style="display: flex; flex-direction: column; gap: 8px; flex: 0 0 160px;">
+              <p class="game-btn" onclick="selectGame('mr')" id="btn-mr">
+                <img src="mrlogo.jpg" style="width: 18px; height: 18px; margin-right: 6px;"> marvel rivals
+              </p>
+              <p class="game-btn" onclick="selectGame('lock')" id="btn-lock">
+                <img src="dl.png" style="width: 18px; height: 18px; margin-right: 6px;"> deadlock
+              </p>
+              <p class="game-btn" onclick="selectGame('ow')" id="btn-ow">
+                <img src="owlogo.png" style="width: 18px; height: 18px; margin-right: 6px;"> overwatch
+              </p>
+            </div>
+            <div style="flex: 1; min-height: 180px; border: 1px solid #444; border-radius: 4px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <span id="game-placeholder" style="color: #888; font-size: 13px;">← click a game!</span>
+              <img id="img-mr" src="mr.png" alt="marvel rivals" style="display:none; width:100%; height:auto;">
+              <img id="img-lock" src="lock.png" alt="deadlock" style="display:none; width:50%; height:auto;">
+              <img id="img-ow" src="ow.jpg" alt="overwatch" style="display:none; width:100%; height:auto;">
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- Favs tab -->
+        <div id="favs" class="tabcontent">
+          <h3>favs</h3>
+          <p>Anime genres: music, sports, slice of life</p>
+          <p></p>
+          <p>Players: <br>
+            LoL: Faker <br>
+            Valorant: bang <br>
+            OW: Mer1t <br>
+            osu!: ASecretBox <br>
+            Deadlock: oses 
+          
+          </p>
+          <p>Music: Imy, kozato snow, any touhou music</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+function selectGame(id) {
+  ['mr', 'lock', 'ow'].forEach(g => {
+    document.getElementById('img-' + g).style.display = 'none';
+  });
+  document.getElementById('game-placeholder').style.display = 'none';
+  document.getElementById('img-' + id).style.display = 'block';
+}
+
+function toggleDarkmode() {
+  document.body.classList.toggle("darkmode");
+  const btn = document.getElementById("darkmode-btn");
+  btn.textContent = document.body.classList.contains("darkmode") ? "light mode" : "dark mode";
+}
+
+function toggleMore() {
+  const panel = document.getElementById('right-panel');
+  const btn = document.getElementById('more-btn');
+
+  if (!panel.classList.contains('expanded')) {
+    panel.classList.add('expanded');
+    btn.textContent = 'hide';
+  } else {
+    panel.classList.remove('expanded');
+    btn.textContent = 'more';
+    document.querySelectorAll('.tabcontent').forEach(t => t.style.display = 'none');
+    document.querySelectorAll('.tablinks').forEach(b => b.classList.remove('active'));
+  }
+}
+</script>
+
+</body>
+</html>
